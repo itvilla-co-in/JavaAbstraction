@@ -1,0 +1,88 @@
+Abstraction is a process of hiding the implementation details from the user. Оnly the functionality will be provided to the user. In Java, abstraction is achieved using abstract classes and interfaces. We have a more detailed explanation on Java Interfaces
+
+
+Lets us take an example to understand why we need abstraction or interfaces in java. 
+Suppose you have two types of employess in ogranziation i.e contractor employee, permanent employee. 
+Now there are some basic methods/features that are offerred by organization  to both i.e contractor employee, permanent employee 
+and at the same time there are some specific methods for contractor employee and permanent employee.
+
+In this scenario you will write an employee class with all the basic methods and you will leve all the methods empty then you can extend your
+subclass i.e contractor or permanent can implement all the empty classes. lets assume computesal as that empty class in our example. 
+
+So for contractor the salary calcuation are sepereate and for permanet employee the calcuation are sepereate.
+
+This is one of the cases where we use abstraction which is implemented in java by means of abstract classes and interfaces.
+
+If you define any method as abstract i.e empty method which needs to be implemented by the subclass then class has to be abstract. 
+
+Here in our example for contractor we are only paying him for the hours he worked i.e sal = this.hourlyrate * this.noofhours; , 
+but for the employee we paying for all 8 hrs per day for entire month.
+
+ 
+
+Interface is full abstraction. It has only methods with empty methods. It cannot implement any class. 
+So why we need interface at all, we can have an abstract class with no methods implemented.  This is an excelent question. 
+
+Abstract classes can have constants, members, method stubs (methods without a body) and defined methods, whereas interfaces can only have constants and methods stubs.
+Methods and members of an abstract class can be defined with any visibility, whereas all methods of an interface must be defined as public (they are defined public by default).
+When inheriting an abstract class, a concrete child class must define the abstract methods, whereas an abstract class can extend another abstract class and abstract methods from the parent class don't have to be defined.
+Similarly, an interface extending another interface is not responsible for implementing methods from the parent interface. This is because interfaces cannot define any implementation.
+A child class can only extend a single class (abstract or concrete), whereas an interface can extend or a class can implement multiple other interfaces.
+A child class can define abstract methods with the same or less restrictive visibility, whereas a class implementing an interface must define the methods with the exact same visibility (public).
+
+
+A Java interface is a bit like a class, except a Java interface can only contain method signatures and fields. An Java interface cannot contain an implementation of the methods, only the signature (name, parameters and exceptions i.e empty body) of the method. 
+
+You can use interfaces in Java as a way to achieve polymorphism and it also helps to achevie abstraction.we can support the functionality of multiple inheritance.
+ 
+An interface is declared using the Java interface keyword. Just like with classes, a Java interface can be declared public or package scope (no access modifier).Before you can really use an interface, you must implement that interface in some Java class.
+ 
+
+When a class implements an interface, you can think of the class as a contract, agreeing to perform the specific behaviors of the interface. If a class does not perform all the behaviors of the interface, the class must declare itself as abstract.
+A class uses the implements keyword to implement an interface. The implements keyword appears in the class declaration following the extends portion of the declaration.
+
+
+
+
+
+Interface is programming structure where you define your functions/services that you want to expose to public or other modules. Kind of a contract where you promise that you are providing some functionalities or services, but hiding the implementation so that implementation can be changed without affecting your contract.
+Abstract class is a partially implemented class and it has no real meaning other than serving as a parent for multiple child classes those with real meaning. Abstract class is special parent class that provides default functionalities to multiple child classes. it is created as abstract because of unavailability of suitable concrete parent class.
+
+
+Rules:
+A class can implement more than one interface at a time.
+A class can extend only one class, but implement many interfaces.
+An interface can extend another interface, in a similar way as a class can extend another class.
+Checked exceptions should not be declared on implementation methods other than the ones declared by the interface method or subclasses of those declared by the interface method.
+The signature of the interface method and the same return type or subtype should be maintained when overriding the methods.
+An implementation class itself can be abstract and if so, interface methods need not be implemented.
+
+
+Interface and Inheritance
+An interface can extend another interface, in a similar way as a class can extend another class.
+
+
+interface interface1{
+   public void method1();
+}
+interface Inf2 extends interface2 {
+   public void method2();
+}
+public class Demo implements interface2{
+   /*  This works in same way as classes work. by impelementing interface 2 you are also inherting
+   interface 1
+    */
+    public void method1(){
+	System.out.println("method1");
+    }
+    public void method2(){
+	System.out.println("method2");
+    }
+    public static void main(String args[]){
+	Inf2 obj = new Demo();
+	obj.method2();
+    }
+}
+
+
+ 
